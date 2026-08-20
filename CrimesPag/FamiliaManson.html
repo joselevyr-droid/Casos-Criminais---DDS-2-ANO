@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Arquivo Manson</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #ccc;
+            font-family: Arial, sans-serif;
+        }
+
+        /* MENU */
+
+        nav {
+            height: 60px;
+            background: #111;
+            border-bottom: 1px solid #3d1717;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 70px;
+        }
+
+        nav h2 {
+            color: #a52222;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 13px;
+        }
+
+        nav a:hover {
+            color: #b52b2b;
+        }
+
+
+        /* CAPA */
+
+        .hero {
+            width: 100%;
+            height: 520px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.65),
+                    rgba(0,0,0,.9)
+                ),
+                url("https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1400&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: 70px;
+            color: #eee;
+            letter-spacing: 5px;
+        }
+
+        .hero h1 span {
+            color: #9d2020;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 16px;
+        }
+
+        .stamp {
+            display: inline-block;
+            margin-bottom: 20px;
+
+            border: 2px solid #9d2020;
+            color: #b52b2b;
+
+            padding: 7px 18px;
+
+            font-size: 12px;
+            letter-spacing: 3px;
+
+            transform: rotate(-3deg);
+        }
+
+
+        /* CONTEÚDO */
+
+        main {
+            width: 1050px;
+            margin: auto;
+            padding: 70px 0;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-family: Georgia, serif;
+            color: #ddd;
+            font-size: 32px;
+            margin-bottom: 25px;
+
+            border-left: 4px solid #9d2020;
+            padding-left: 12px;
+        }
+
+        p {
+            color: #aaa;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+
+        /* DOSSIÊ */
+
+        .dossier {
+            background: #151515;
+            border: 1px solid #333;
+            padding: 30px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .info {
+            border-bottom: 1px solid #333;
+            padding: 12px;
+        }
+
+        .info small {
+            display: block;
+            color: #777;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .info strong {
+            color: #ddd;
+        }
+
+
+        /* FOTO + TEXTO */
+
+        .about {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 420px;
+            height: 300px;
+            object-fit: cover;
+
+            filter: grayscale(100%);
+
+            border: 1px solid #333;
+        }
+
+
+        /* LINHA DO TEMPO */
+
+        .timeline {
+            border-left: 2px solid #681919;
+            padding-left: 30px;
+        }
+
+        .event {
+            background: #151515;
+            border: 1px solid #292929;
+
+            padding: 20px;
+            margin-bottom: 18px;
+        }
+
+        .event strong {
+            color: #a52222;
+            font-size: 14px;
+        }
+
+        .event h3 {
+            color: #ddd;
+            margin: 6px 0;
+        }
+
+
+        /* AVISO */
+
+        .warning {
+            background: #1b0d0d;
+            border: 1px solid #541717;
+
+            padding: 25px;
+        }
+
+        .warning strong {
+            color: #b52b2b;
+        }
+
+
+        /* RODAPÉ */
+
+        footer {
+            height: 120px;
+
+            background: #080808;
+            border-top: 1px solid #292929;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            color: #555;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <h2>CASE 1969</h2>
+
+        <div>
+            <a href="#caso">O CASO</a>
+            <a href="#dossie">DOSSIÊ</a>
+            <a href="#timeline">CRONOLOGIA</a>
+        </div>
+
+    </nav>
+
+
+    <header class="hero">
+
+        <div>
+
+            <div class="stamp">
+                ARQUIVO HISTÓRICO
+            </div>
+
+            <h1>
+                FAMÍLIA <span>MANSON</span>
+            </h1>
+
+            <p>
+                Um dos casos criminais mais conhecidos da Califórnia.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+
+        <section id="caso">
+
+            <h2>O Caso</h2>
+
+            <div class="about">
+                
+                <img src="../Imagens/CharlesManson.jfif" alt="Imagem de Charles Manson" Width="50px" Height="50px">
+                    
+                <div>
+
+                    <p>
+                        Charles Manson foi o líder de um grupo conhecido
+                        como Família Manson, formado principalmente por
+                        jovens que viviam próximos a ele na Califórnia.
+                    </p>
+
+                    <p>
+                        Em agosto de 1969, integrantes do grupo cometeram
+                        uma série de assassinatos em Los Angeles.
+                    </p>
+
+                    <p>
+                        O caso recebeu enorme atenção da imprensa e
+                        posteriormente resultou em um dos julgamentos
+                        criminais mais conhecidos dos Estados Unidos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="dossie">
+
+            <h2>Dossiê</h2>
+
+            <div class="dossier">
+
+                <div class="info">
+                    <small>PRINCIPAL FIGURA</small>
+                    <strong>Charles Manson</strong>
+                </div>
+
+                <div class="info">
+                    <small>GRUPO</small>
+                    <strong>Família Manson</strong>
+                </div>
+
+                <div class="info">
+                    <small>LOCAL</small>
+                    <strong>Los Angeles, Califórnia</strong>
+                </div>
+
+                <div class="info">
+                    <small>ANO</small>
+                    <strong>1969</strong>
+                </div>
+
+                <div class="info">
+                    <small>TIPO</small>
+                    <strong>Investigação criminal</strong>
+                </div>
+
+                <div class="info">
+                    <small>DESDOBRAMENTO</small>
+                    <strong>Julgamento e condenações</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="timeline">
+
+            <h2>Cronologia</h2>
+
+            <div class="timeline">
+
+                <div class="event">
+
+                    <strong>1967</strong>
+
+                    <h3>Formação do grupo</h3>
+
+                    <p>
+                        Manson começa a reunir seguidores na Califórnia,
+                        formando a comunidade que ficaria conhecida como
+                        Família Manson.
+                    </p>
+
+                </div>
+
+
+                <div class="event">
+
+                    <strong>AGOSTO — 1969</strong>
+
+                    <h3>Os assassinatos</h3>
+
+                    <p>
+                        Integrantes do grupo participam de uma série de
+                        assassinatos em Los Angeles.
+                    </p>
+
+                </div>
+
+
+                <div class="event">
+
+                    <strong>1969</strong>
+
+                    <h3>Investigação</h3>
+
+                    <p>
+                        As autoridades começam a estabelecer conexões
+                        entre os crimes e os integrantes do grupo.
+                    </p>
+
+                </div>
+
+
+                <div class="event">
+
+                    <strong>1970–1971</strong>
+
+                    <h3>Julgamento</h3>
+
+                    <p>
+                        Manson e outros integrantes são julgados e
+                        condenados pelos crimes.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section>
+
+            <h2>Nota</h2>
+
+            <div class="warning">
+
+                <strong>ARQUIVO HISTÓRICO:</strong>
+
+                <p>
+                    Este site apresenta o caso de maneira documental.
+                    As vítimas eram pessoas reais e o objetivo desta
+                    página é abordar os acontecimentos historicamente,
+                    sem glorificar os responsáveis pelos crimes.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div>
+            CASE 1969 — ARQUIVO MANSON<br>
+            Página histórica sobre o caso da Família Manson.
+        </div>
+
+    </footer>
+
+</body>
+</html>
