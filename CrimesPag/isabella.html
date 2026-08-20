@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Caso Isabella Nardoni — Linha do Tempo</title>
+
+    <meta name="description"
+          content="Página documental sobre o caso Isabella Nardoni, sua investigação, julgamento e repercussão.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --black-2: #080808;
+            --black-3: #111111;
+            --red: #b30000;
+            --red-light: #e00000;
+            --red-dark: #5c0000;
+            --white: #f2f2f2;
+            --gray: #a6a6a6;
+            --gray-dark: #333333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           BARRA DE NAVEGAÇÃO
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(0, 0, 0, 0.92);
+            border-bottom: 1px solid #300000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: var(--red-light);
+            font-weight: 900;
+            letter-spacing: 3px;
+            font-size: 15px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--red-light);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 25px 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(120, 0, 0, 0.20),
+                    transparent 45%
+                ),
+                #000;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+
+            border: 1px solid rgba(180, 0, 0, 0.15);
+            border-radius: 50%;
+
+            animation: pulse 5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(0.9);
+                opacity: 0.2;
+            }
+
+            to {
+                transform: scale(1.1);
+                opacity: 0.5;
+            }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            color: var(--red-light);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 9vw, 100px);
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+        }
+
+        .hero h1 span {
+            color: var(--red-light);
+        }
+
+        .hero-subtitle {
+            max-width: 650px;
+            margin: 30px auto 0;
+            color: #aaa;
+            font-size: 17px;
+        }
+
+        .warning {
+            margin-top: 35px;
+            display: inline-block;
+
+            border-left: 3px solid var(--red-light);
+            padding: 10px 18px;
+
+            color: #999;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 100px 25px;
+        }
+
+        section {
+            scroll-margin-top: 90px;
+        }
+
+        .section-title {
+            margin-bottom: 45px;
+        }
+
+        .section-title .number {
+            color: var(--red-light);
+            font-size: 13px;
+            letter-spacing: 3px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(30px, 5vw, 50px);
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin-top: 10px;
+        }
+
+        /* =========================
+           INTRODUÇÃO
+        ========================= */
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .text p {
+            color: #c8c8c8;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: white;
+            border-left: 3px solid var(--red);
+            padding-left: 20px;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--black-2);
+            border: 1px solid #292929;
+            padding: 25px;
+
+            position: relative;
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--red);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--red-dark);
+        }
+
+        .card small {
+            color: var(--red-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card h3 {
+            margin: 8px 0;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* =========================
+           SLOTS DE IMAGEM
+        ========================= */
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .image-slot {
+            min-height: 300px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #080808,
+                    #111
+                );
+
+            border: 1px dashed #650000;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-slot.large {
+            grid-column: span 2;
+            min-height: 430px;
+        }
+
+        .image-slot::after {
+            content: "SLOT PARA IMAGEM";
+            color: #650000;
+            font-size: 13px;
+            letter-spacing: 4px;
+            position: absolute;
+        }
+
+        .image-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            position: relative;
+            z-index: 2;
+        }
+
+        /*
+            PARA COLOCAR UMA IMAGEM:
+
+            1. Coloque sua imagem na pasta do site.
+            2. Troque:
+               display: none;
+            por:
+               display: block;
+
+            3. No HTML, coloque:
+               src="sua-imagem.jpg"
+        */
+
+        /* =========================
+           LINHA DO TEMPO
+        ========================= */
+
+        .timeline {
+            position: relative;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                var(--red),
+                #300000,
+                transparent
+            );
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 55px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 5px;
+            top: 5px;
+
+            width: 20px;
+            height: 20px;
+
+            background: var(--black);
+            border: 3px solid var(--red-light);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            color: var(--red-light);
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .timeline-item h3 {
+            margin: 6px 0;
+            font-size: 24px;
+        }
+
+        .timeline-item p {
+            color: var(--gray);
+        }
+
+        /* =========================
+           JULGAMENTO
+        ========================= */
+
+        .verdict {
+            border: 1px solid #3c0000;
+            background:
+                linear-gradient(
+                    135deg,
+                    #0c0000,
+                    #050505
+                );
+
+            padding: 40px;
+        }
+
+        .verdict-title {
+            color: var(--red-light);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+        }
+
+        .verdict h3 {
+            font-size: 30px;
+            margin: 10px 0 30px;
+        }
+
+        .verdict-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .sentence {
+            padding: 25px;
+            background: #090909;
+            border-left: 3px solid var(--red);
+        }
+
+        .sentence h4 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .sentence strong {
+            display: block;
+            color: var(--red-light);
+            font-size: 25px;
+        }
+
+        .sentence p {
+            color: #999;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           FONTES
+        ========================= */
+
+        .sources {
+            display: grid;
+            gap: 12px;
+        }
+
+        .source-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 22px;
+
+            background: #080808;
+            border: 1px solid #242424;
+
+            text-decoration: none;
+            color: white;
+
+            transition: 0.3s;
+        }
+
+        .source-link span {
+            color: #999;
+            font-size: 13px;
+        }
+
+        .source-link:hover {
+            border-color: var(--red);
+            background: #100000;
+        }
+
+        .arrow {
+            color: var(--red-light);
+            font-size: 20px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid #240000;
+            padding: 50px 25px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+
+        footer strong {
+            color: var(--red-light);
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            nav {
+                justify-content: center;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 130px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-slot.large {
+                grid-column: span 1;
+            }
+
+            .verdict-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .verdict {
+                padding: 25px;
+            }
+        }
+.back-arrow {
+    position: fixed;
+    top: 0px;
+    left: 20px;
+
+    color: red;
+    font-size: 32px;
+    text-decoration: none;
+
+    z-index: 9999;
+}
+
+.back-arrow:hover {
+    color: #ff3333;
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">ARQUIVO // 2008</div>
+
+        <ul>
+            <li><a href="#caso">O caso</a></li>
+            <li><a href="#linha-do-tempo">Linha do tempo</a></li>
+            <li><a href="#julgamento">Julgamento</a></li>
+            <li><a href="#fontes">Fontes</a></li>
+        </ul>
+    </nav>
+</header>
+
+<a href="../index.html" class="back-arrow">←</a>
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            Caso criminal • São Paulo • 2008
+        </div>
+
+        <h1>
+            Isabella<br>
+            <span>Nardoni</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            Uma página documental sobre um dos casos criminais
+            de maior repercussão da história recente do Brasil.
+        </p>
+
+        <div class="warning">
+            CONTEÚDO DOCUMENTAL<br>
+            Esta página trata de um caso envolvendo a morte de uma criança.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     O CASO
+========================= -->
+
+<section id="caso">
+
+    <div class="container">
+
+        <div class="section-title">
+            <div class="number">01 / O CASO</div>
+            <h2>O que aconteceu</h2>
+            <p>
+                Contextualização dos acontecimentos e da investigação.
+            </p>
+        </div>
+
+
+        <div class="intro-grid">
+
+            <div class="text">
+
+                <p>
+                    Isabella de Oliveira Nardoni, de cinco anos, morreu
+                    na noite de 29 de março de 2008, após ser lançada
+                    da janela do sexto andar de um apartamento localizado
+                    na cidade de São Paulo.
+                </p>
+
+                <p>
+                    O caso rapidamente ganhou enorme repercussão nacional
+                    e passou a ser acompanhado intensamente pela imprensa,
+                    pela sociedade e pelo sistema de Justiça.
+                </p>
+
+                <p class="highlight">
+                    A investigação e o processo criminal se concentraram
+                    principalmente nas circunstâncias da morte, nos
+                    vestígios encontrados no apartamento e na participação
+                    de Alexandre Nardoni e Anna Carolina Jatobá.
+                </p>
+
+                <p>
+                    Segundo a sentença publicada pelo Tribunal de Justiça
+                    de São Paulo, o júri reconheceu a prática de homicídio
+                    triplamente qualificado e também de fraude processual.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+                    <small>Vítima</small>
+                    <h3>Isabella Nardoni</h3>
+                    <p>
+                        Menina de cinco anos que morreu em 29 de março
+                        de 2008.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <small>Local</small>
+                    <h3>São Paulo</h3>
+                    <p>
+                        O crime ocorreu em um apartamento na região
+                        norte da capital paulista.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <small>Ano</small>
+                    <h3>2008</h3>
+                    <p>
+                        A investigação mobilizou a imprensa e a opinião
+                        pública em todo o país.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <small>Julgamento</small>
+                    <h3>Tribunal do Júri</h3>
+                    <p>
+                        O julgamento ocorreu em março de 2010.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     IMAGENS
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+            <div class="number">02 / ARQUIVO VISUAL</div>
+            <h2>Galeria</h2>
+        </div>
+
+
+        <div class="image-grid">
+
+            <div class="image-slot large">
+                <img src="../Imagens/isabel2.jpg" alt="Imagem principal do caso">
+            </div>
+
+            <div class="image-slot">
+                <img src="../Imagens/isabel1.webp" alt="Imagem do arquivo 01">
+            </div>
+
+            <div class="image-slot">
+                <img src="../Imagens/isabel3.webp" alt="Imagem do arquivo 02">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LINHA DO TEMPO
+========================= -->
+
+<section id="linha-do-tempo">
+
+    <div class="container">
+
+        <div class="section-title">
+            <div class="number">03 / CRONOLOGIA</div>
+            <h2>Linha do tempo</h2>
+            <p>
+                Principais acontecimentos relacionados ao caso.
+            </p>
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    29 MARÇO 2008
+                </div>
+
+                <h3>A morte de Isabella</h3>
+
+                <p>
+                    Isabella Nardoni morre após ser lançada da janela
+                    do apartamento onde estava com o pai e a madrasta.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    2008
+                </div>
+
+                <h3>Investigação</h3>
+
+                <p>
+                    A polícia realiza perícias e coleta de vestígios
+                    para reconstruir os acontecimentos e determinar
+                    a dinâmica da morte.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    2009
+                </div>
+
+                <h3>Processo judicial</h3>
+
+                <p>
+                    O processo avança na Justiça e os acusados são
+                    encaminhados para julgamento pelo Tribunal do Júri.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    MARÇO 2010
+                </div>
+
+                <h3>Julgamento</h3>
+
+                <p>
+                    Após cinco dias de julgamento, o Conselho de Sentença
+                    reconhece a responsabilidade dos acusados conforme
+                    a acusação apresentada.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    2010 EM DIANTE
+                </div>
+
+                <h3>Recursos e execução das penas</h3>
+
+                <p>
+                    A defesa apresentou recursos. O Tribunal de Justiça
+                    analisou posteriormente questões relacionadas às
+                    condenações e à execução das penas.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     JULGAMENTO
+========================= -->
+
+<section id="julgamento">
+
+    <div class="container">
+
+        <div class="section-title">
+            <div class="number">04 / JUSTIÇA</div>
+            <h2>O julgamento</h2>
+            <p>
+                Resultado do Tribunal do Júri e informações sobre
+                as penas registradas pelo TJSP.
+            </p>
+        </div>
+
+
+        <div class="verdict">
+
+            <div class="verdict-title">
+                Sentença
+            </div>
+
+            <h3>
+                Condenação dos acusados
+            </h3>
+
+
+            <div class="verdict-grid">
+
+                <div class="sentence">
+
+                    <h4>
+                        Alexandre Nardoni
+                    </h4>
+
+                    <strong>
+                        30 anos,
+                        2 meses e
+                        20 dias
+                    </strong>
+
+                    <p>
+                        Pena posteriormente corrigida pelo Tribunal
+                        de Justiça de São Paulo.
+                    </p>
+
+                </div>
+
+
+                <div class="sentence">
+
+                    <h4>
+                        Anna Carolina Jatobá
+                    </h4>
+
+                    <strong>
+                        26 anos
+                        e 8 meses
+                    </strong>
+
+                    <p>
+                        Condenação relacionada ao homicídio qualificado
+                        e à fraude processual.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DOCUMENTOS / FONTES
+========================= -->
+
+<section id="fontes">
+
+    <div class="container">
+
+        <div class="section-title">
+            <div class="number">05 / DOCUMENTOS</div>
+
+            <h2>Fontes importantes</h2>
+
+            <p>
+                Links para consultar documentos e informações
+                diretamente em fontes institucionais.
+            </p>
+        </div>
+
+
+        <div class="sources">
+
+            <!-- Tribunal de Justiça de São Paulo -->
+
+            <a
+                class="source-link"
+                href="https://www.tjsp.jus.br/SecaoDireitoPrivado/Noticias/Noticia?codigoNoticia=6592"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <div>
+                    <strong>
+                        TJSP — Sentença do caso Nardoni
+                    </strong>
+
+                    <br>
+
+                    <span>
+                        Documento disponibilizado pelo Tribunal de Justiça
+                        de São Paulo.
+                    </span>
+                </div>
+
+                <div class="arrow">↗</div>
+            </a>
+
+
+            <a
+                class="source-link"
+                href="https://www.tjsp.jus.br/Imprensa/Noticias/Noticia?codigoNoticia=10323"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <div>
+                    <strong>
+                        TJSP — Recurso do casal Nardoni
+                    </strong>
+
+                    <br>
+
+                    <span>
+                        Informação oficial sobre decisão posterior
+                        envolvendo a condenação.
+                    </span>
+                </div>
+
+                <div class="arrow">↗</div>
+            </a>
+
+
+            <a
+                class="source-link"
+                href="https://esaj.tjsp.jus.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <div>
+                    <strong>
+                        e-SAJ — Tribunal de Justiça de São Paulo
+                    </strong>
+
+                    <br>
+
+                    <span>
+                        Portal de consulta processual e judicial.
+                    </span>
+                </div>
+
+                <div class="arrow">↗</div>
+            </a>
+
+
+            <a
+                class="source-link"
+                href="https://www.tjsp.jus.br/Jurisprudencia"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <div>
+                    <strong>
+                        TJSP — Jurisprudência e Sentenças
+                    </strong>
+
+                    <br>
+
+                    <span>
+                        Consulta oficial de decisões e julgados.
+                    </span>
+                </div>
+
+                <div class="arrow">↗</div>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        <strong>ARQUIVO ISABELLA NARDONI</strong>
+    </p>
+
+    <p>
+        Página criada para fins informativos e documentais.
+    </p>
+
+    <p>
+        Consulte sempre as fontes judiciais originais para
+        informações processuais.
+    </p>
+
+</footer>
+
+
+<script>
+
+    /*
+        Pequena animação para revelar elementos
+        conforme o usuário rola a página.
+    */
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.1
+        }
+    );
+
+
+    document
+        .querySelectorAll(".card, .timeline-item, .image-slot, .verdict, .source-link")
+        .forEach(element => {
+
+            element.style.opacity = "0";
+            element.style.transform = "translateY(20px)";
+            element.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+
+            observer.observe(element);
+
+        });
+
+</script>
+
+</body>
+</html>
