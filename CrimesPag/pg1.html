@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>As Meninas de Realengo — Caso Criminal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0b0b;
+            color: #e5e5e5;
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.7;
+        }
+
+        /* CABEÇALHO */
+        header {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.95)),
+                url("imagens/capa.jpg") center/cover;
+            border-bottom: 4px solid #9b0000;
+        }
+
+        .header-content {
+            max-width: 900px;
+            padding: 30px;
+        }
+
+        .tag {
+            color: #b00000;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1;
+            margin: 20px 0;
+            color: #fff;
+        }
+
+        .subtitle {
+            color: #aaa;
+            font-size: 20px;
+        }
+
+        .red-line {
+            width: 100px;
+            height: 4px;
+            background: #a00000;
+            margin: 30px auto;
+        }
+
+        /* NAVEGAÇÃO */
+        nav {
+            background: #111;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        nav a {
+            display: block;
+            padding: 18px 25px;
+            color: #ccc;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            background: #9b0000;
+            color: white;
+        }
+
+        /* CONTEÚDO */
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        section {
+            margin-bottom: 100px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .section-title span {
+            width: 8px;
+            height: 45px;
+            background: #a00000;
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            color: #c00000;
+            margin: 25px 0 10px;
+        }
+
+        p {
+            color: #c8c8c8;
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        /* ESPAÇOS PARA IMAGENS */
+        .image-placeholder {
+            width: 100%;
+            height: 420px;
+            background: #151515;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 35px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #8d0000;
+            top: 50%;
+            transform: rotate(-8deg);
+            opacity: .5;
+        }
+
+        .image-placeholder span {
+            position: relative;
+            z-index: 2;
+            color: #666;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* DESTAQUE */
+        .quote {
+            border-left: 5px solid #a00000;
+            background: #111;
+            padding: 30px;
+            margin: 40px 0;
+            font-size: 22px;
+            font-style: italic;
+            color: #ddd;
+        }
+
+        /* LINHA DO TEMPO */
+        .timeline {
+            border-left: 2px solid #8d0000;
+            margin: 40px 0;
+            padding-left: 35px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 45px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            background: #a00000;
+            border-radius: 50%;
+            left: -43px;
+            top: 8px;
+            box-shadow: 0 0 0 5px #0b0b0b;
+        }
+
+        .date {
+            color: #b00000;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* CARTÕES */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: #141414;
+            border-top: 3px solid #900000;
+            padding: 25px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        /* AVISO */
+        .warning {
+            border: 1px solid #700000;
+            background: #160909;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .warning strong {
+            color: #d00000;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background: #050505;
+            border-top: 1px solid #333;
+            text-align: center;
+            padding: 50px 20px;
+            color: #666;
+        }
+
+        footer .red {
+            color: #a00000;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 600px) {
+            nav a {
+                padding: 12px;
+                font-size: 11px;
+            }
+
+            main {
+                padding: 50px 18px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            .image-placeholder {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+
+        <div class="tag">
+            Arquivo • Caso Criminal
+        </div>
+
+        <h1>As Meninas<br>de Realengo</h1>
+
+        <div class="red-line"></div>
+
+        <p class="subtitle">
+            Uma investigação documental sobre o caso,
+            seus acontecimentos e suas consequências.
+        </p>
+
+    </div>
+</header>
+
+
+<nav>
+    <ul>
+        <li><a href="#caso">O Caso</a></li>
+        <li><a href="#cronologia">Cronologia</a></li>
+        <li><a href="#investigacao">Investigação</a></li>
+        <li><a href="#vitimas">Vítimas</a></li>
+        <li><a href="#consequencias">Consequências</a></li>
+        <li><a href="#fontes">Fontes</a></li>
+    </ul>
+</nav>
+
+
+<main>
+
+    <!-- O CASO -->
+    <section id="caso">
+
+        <div class="section-title">
+            <span></span>
+            <h2>O Caso</h2>
+        </div>
+
+        <p>
+            Aqui será apresentada uma introdução sobre o caso
+            "As Meninas de Realengo", contextualizando os acontecimentos,
+            o local, o período e as circunstâncias envolvidas.
+        </p>
+
+        <p>
+            Utilize este espaço para inserir informações verificadas
+            provenientes de fontes jornalísticas, documentos oficiais
+            e outras referências confiáveis.
+        </p>
+
+        <div class="image-placeholder">
+            <span>ESPAÇO PARA IMAGEM PRINCIPAL DO CASO</span>
+        </div>
+
+        <div class="warning">
+            <strong>Nota documental:</strong>
+            Este conteúdo deve tratar as vítimas e seus familiares
+            com respeito, evitando sensacionalismo e imagens
+            de natureza gráfica.
+        </div>
+
+    </section>
+
+
+    <!-- CRONOLOGIA -->
+    <section id="cronologia">
+
+        <div class="section-title">
+            <span></span>
+            <h2>Cronologia</h2>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="date">DATA / HORÁRIO</div>
+                <h3>O início</h3>
+                <p>
+                    Descreva aqui os primeiros acontecimentos
+                    documentados relacionados ao caso.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">DATA / HORÁRIO</div>
+                <h3>O acontecimento</h3>
+                <p>
+                    Insira uma descrição objetiva dos acontecimentos,
+                    baseada em fontes verificáveis.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">DATA / HORÁRIO</div>
+                <h3>Início das investigações</h3>
+                <p>
+                    Explique como as autoridades iniciaram
+                    a investigação.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">DATA / HORÁRIO</div>
+                <h3>Desdobramentos</h3>
+                <p>
+                    Registre os principais acontecimentos posteriores.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INVESTIGAÇÃO -->
+    <section id="investigacao">
+
+        <div class="section-title">
+            <span></span>
+            <h2>Investigação</h2>
+        </div>
+
+        <div class="image-placeholder">
+            <span>ESPAÇO PARA FOTO / DOCUMENTO / LOCAL</span>
+        </div>
+
+        <p>
+            Nesta parte podem ser apresentados os elementos conhecidos
+            da investigação, depoimentos, documentos, perícias e
+            informações divulgadas oficialmente.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Local</h3>
+                <p>
+                    Informações sobre o local relacionado ao caso.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Investigação</h3>
+                <p>
+                    Informações sobre as autoridades responsáveis
+                    pela investigação.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Evidências</h3>
+                <p>
+                    Principais elementos documentados no caso.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VÍTIMAS -->
+    <section id="vitimas">
+
+        <div class="section-title">
+            <span></span>
+            <h2>As Vítimas</h2>
+        </div>
+
+        <p>
+            Esta seção deve apresentar as vítimas de maneira humana
+            e respeitosa, evitando reduzir suas histórias ao crime.
+        </p>
+
+        <div class="images (1).jpg">
+            <img src="Imagens/img1.jpg" alt="">
+            <span>ESPAÇO PARA FOTOGRAFIA</span>
+        </div>
+
+        <div class="quote">
+            "Este espaço pode ser utilizado para uma frase,
+            homenagem ou informação relevante sobre as vítimas."
+        </div>
+
+    </section>
+
+
+    <!-- CONSEQUÊNCIAS -->
+    <section id="consequencias">
+
+        <div class="section-title">
+            <span></span>
+            <h2>Consequências</h2>
+        </div>
+
+        <p>
+            Apresente aqui as consequências do caso para familiares,
+            comunidade, instituições e sociedade.
+        </p>
+
+        <div class="image-placeholder">
+            <img src="Imagens/img1.jpg" alt="">
+            <span>ESPAÇO PARA IMAGEM / REPORTAGEM / DOCUMENTO</span>
+        </div>
+
+    </section>
+
+
+    <!-- FONTES -->
+    <section id="fontes">
+
+        <div class="section-title">
+            <span></span>
+            <h2>Fontes</h2>
+        </div>
+
+        <p>
+            Abaixo devem ser colocadas as fontes utilizadas
+            na construção desta página.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Fonte 01</h3>
+                <p>
+                    Nome do veículo ou documento.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Fonte 02</h3>
+                <p>
+                    Nome do veículo ou documento.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Fonte 03</h3>
+                <p>
+                    Nome do veículo ou documento.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        Projeto documental — <span class="red">As Meninas de Realengo</span>
+    </p>
+
+    <p>
+        Conteúdo desenvolvido para fins informativos e educacionais.
+    </p>
+
+</footer>
+
+</body>
+</html>
