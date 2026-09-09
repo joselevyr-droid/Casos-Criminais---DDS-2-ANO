@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Maníaco do Parque</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #eee;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(
+                rgba(0,0,0,0.75),
+                rgba(0,0,0,0.85)
+            ),
+            url("https://images.unsplash.com/photo-1511497584788-876760111969")
+            center/cover;
+
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .capa h1 {
+            font-size: 55px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .capa p {
+            font-size: 20px;
+            margin-top: 15px;
+            color: #ccc;
+        }
+
+        nav {
+            background: #191919;
+            padding: 18px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #333;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #b30000;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 50px 25px;
+        }
+
+        section {
+            margin-bottom: 60px;
+            background: #1b1b1b;
+            padding: 35px;
+            border-radius: 12px;
+            border-left: 4px solid #8b0000;
+        }
+
+        h2 {
+            color: #d00000;
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+
+        p {
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .destaque {
+            background: #242424;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .linha-do-tempo {
+            border-left: 3px solid #8b0000;
+            padding-left: 25px;
+        }
+
+        .evento {
+            margin-bottom: 25px;
+        }
+
+        .evento h3 {
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background: #080808;
+            text-align: center;
+            padding: 30px;
+            color: #999;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            .capa h1 {
+                font-size: 35px;
+            }
+
+            nav a {
+                display: block;
+                margin: 8px;
+            }
+
+            section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="capa">
+            <h1>O Maníaco do Parque</h1>
+            <p>Um caso criminal que marcou a história do Brasil</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#caso">O Caso</a>
+        <a href="#investigacao">Investigação</a>
+        <a href="#julgamento">Julgamento</a>
+        <a href="#impacto">Impacto</a>
+    </nav>
+
+    <main>
+
+        <section id="caso">
+            <h2>O caso</h2>
+
+            <p>
+                Francisco de Assis Pereira ficou conhecido no Brasil como
+                "Maníaco do Parque". O caso ocorreu principalmente na cidade
+                de São Paulo durante a década de 1990.
+            </p>
+
+            <p>
+                Ele ficou conhecido por abordar mulheres e atraí-las para
+                regiões do Parque Estadual das Fontes do Ipiranga, onde
+                posteriormente foram descobertos crimes contra várias vítimas.
+            </p>
+
+            <div class="destaque">
+                <strong>Importante:</strong>
+                Este site apresenta o caso de maneira informativa e
+                respeitosa, sem reproduzir imagens ou descrições gráficas
+                da violência.
+            </div>
+        </section>
+
+
+        <section id="investigacao">
+            <h2>A investigação</h2>
+
+            <p>
+                A investigação policial ganhou grande repercussão quando
+                diferentes relatos começaram a apresentar características
+                semelhantes.
+            </p>
+
+            <p>
+                A polícia passou a reunir depoimentos, informações sobre as
+                vítimas e outras evidências que ajudaram a identificar o
+                suspeito.
+            </p>
+
+            <p>
+                A cobertura da imprensa também contribuiu para aumentar a
+                atenção pública sobre o caso.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Linha do tempo</h2>
+
+            <div class="linha-do-tempo">
+
+                <div class="evento">
+                    <h3>Década de 1990</h3>
+                    <p>
+                        Ocorrem os crimes que posteriormente seriam
+                        relacionados ao suspeito.
+                    </p>
+                </div>
+
+                <div class="evento">
+                    <h3>1998</h3>
+                    <p>
+                        Francisco de Assis Pereira é preso após a investigação
+                        policial.
+                    </p>
+                </div>
+
+                <div class="evento">
+                    <h3>Anos seguintes</h3>
+                    <p>
+                        O caso passa pelo processo judicial e recebe ampla
+                        cobertura da imprensa brasileira.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="julgamento">
+            <h2>Julgamento</h2>
+
+            <p>
+                Após sua prisão, Francisco de Assis Pereira respondeu
+                judicialmente pelos crimes atribuídos a ele.
+            </p>
+
+            <p>
+                O caso teve grande repercussão nacional e resultou em
+                condenações por diversos crimes.
+            </p>
+        </section>
+
+
+        <section id="impacto">
+            <h2>Impacto na sociedade</h2>
+
+            <p>
+                O caso provocou discussões sobre segurança pública,
+                investigação criminal e a importância da denúncia de
+                situações suspeitas.
+            </p>
+
+            <p>
+                Também chamou atenção para a forma como crimes de grande
+                repercussão são apresentados pelos meios de comunicação.
+            </p>
+
+            <p>
+                Atualmente, o caso continua sendo lembrado em documentários,
+                reportagens e produções relacionadas à história criminal
+                brasileira.
+            </p>
+        </section>
+
+
+        <section>
+            <h2>Conclusão</h2>
+
+            <p>
+                O caso do Maníaco do Parque tornou-se um dos crimes de maior
+                repercussão do Brasil na década de 1990. Seu estudo permite
+                compreender aspectos relacionados à investigação policial,
+                ao sistema de justiça e ao papel da imprensa.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            Trabalho escolar — <strong>O Maníaco do Parque</strong>
+        </p>
+
+        <p>
+            Desenvolvido em HTML e CSS
+        </p>
+    </footer>
+
+</body>
+</html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+  
+</body>
+
+</html>
