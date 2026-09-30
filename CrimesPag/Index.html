@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Yara Gambirasio — Arquivo Criminal</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;500;600&display=swap');
+
+
+        /* ================================
+           RESET
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background: #070707;
+            color: #d5d5d5;
+
+            font-family: "JetBrains Mono", monospace;
+
+            min-height: 100vh;
+
+            background-image:
+                linear-gradient(
+                    rgba(120, 0, 0, 0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(120, 0, 0, 0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 40px 40px;
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        header {
+
+            height: 70px;
+
+            background: rgba(5, 5, 5, 0.96);
+
+            border-bottom: 1px solid #3b0b0b;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 35px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            backdrop-filter: blur(12px);
+        }
+
+
+        /* SETA PARA ../index.html */
+
+        .back {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-size: 28px;
+
+            border: 1px solid #641010;
+
+            background: #110606;
+
+            transition: 0.25s;
+
+            clip-path: polygon(
+                0 50%,
+                18% 0,
+                100% 0,
+                100% 100%,
+                18% 100%
+            );
+        }
+
+
+        .back:hover {
+
+            background: #a60000;
+
+            border-color: #ff2222;
+
+            transform: translateX(-4px);
+        }
+
+
+        .header-name {
+
+            margin-left: 24px;
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 18px;
+
+            letter-spacing: 3px;
+
+            color: #ddd;
+        }
+
+
+        .header-status {
+
+            margin-left: auto;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            color: #666;
+        }
+
+
+        .status {
+
+            display: inline-block;
+
+            width: 7px;
+
+            height: 7px;
+
+            background: #c40000;
+
+            border-radius: 50%;
+
+            margin-right: 7px;
+
+            box-shadow: 0 0 10px #c40000;
+        }
+
+
+
+        /* ================================
+           CONTAINER
+        ================================= */
+
+        main {
+
+            width: min(1200px, 92%);
+
+            margin: auto;
+        }
+
+
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+
+            min-height: 650px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 0.85fr;
+
+            gap: 70px;
+
+            align-items: center;
+
+            padding: 80px 0;
+        }
+
+
+        .classification {
+
+            color: #9d0000;
+
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .hero h1 {
+
+            font-family: "Oswald", sans-serif;
+
+            text-transform: uppercase;
+
+            font-size: clamp(60px, 8vw, 105px);
+
+            line-height: .82;
+
+            color: #eeeeee;
+
+            letter-spacing: 2px;
+        }
+
+
+        .hero h1 span {
+
+            display: block;
+
+            color: #a90000;
+        }
+
+
+        .hero-text {
+
+            margin-top: 35px;
+
+            max-width: 600px;
+
+            color: #858585;
+
+            font-size: 13px;
+
+            line-height: 1.9;
+        }
+
+
+        .tags {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 30px;
+        }
+
+
+        .tag {
+
+            border: 1px solid #421010;
+
+            background: #100707;
+
+            padding: 9px 12px;
+
+            color: #888;
+
+            font-size: 10px;
+        }
+
+
+        .tag b {
+
+            color: #c00000;
+        }
+
+
+
+        /* ================================
+           FOTO DA YARA
+        ================================= */
+
+        .photo-container {
+
+            position: relative;
+
+            background: #0d0d0d;
+
+            border: 1px solid #4b1111;
+
+            padding: 12px;
+
+            box-shadow:
+                15px 15px 0 #160505,
+                0 0 50px rgba(130, 0, 0, 0.08);
+        }
+
+
+        .photo-container::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 70px;
+
+            height: 70px;
+
+            border-left: 2px solid #a00000;
+
+            border-top: 2px solid #a00000;
+
+            top: -8px;
+
+            left: -8px;
+        }
+
+
+        .photo-container::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 70px;
+
+            height: 70px;
+
+            border-right: 2px solid #a00000;
+
+            border-bottom: 2px solid #a00000;
+
+            right: -8px;
+
+            bottom: -8px;
+        }
+
+
+        .photo {
+
+            width: 100%;
+
+            height: 430px;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            display: block;
+
+            filter:
+                grayscale(25%)
+                contrast(1.05);
+
+            opacity: .93;
+        }
+
+
+        .photo-label {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 12px 5px 2px;
+
+            color: #555;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+        }
+
+
+        .photo-label span:last-child {
+
+            color: #8e0000;
+        }
+
+
+        .classified {
+
+            position: absolute;
+
+            right: 25px;
+
+            top: 25px;
+
+            color: #a90000;
+
+            border: 2px solid #a90000;
+
+            padding: 8px 12px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            transform: rotate(-8deg);
+
+            opacity: .9;
+        }
+
+
+
+        /* ================================
+           SEÇÕES
+        ================================= */
+
+        section {
+
+            border-top: 1px solid #291010;
+
+            padding: 80px 0;
+        }
+
+
+        .section-number {
+
+            color: #9e0000;
+
+            font-size: 10px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .section-title {
+
+            font-family: "Oswald", sans-serif;
+
+            text-transform: uppercase;
+
+            font-size: 46px;
+
+            color: #e6e6e6;
+
+            margin-bottom: 35px;
+        }
+
+
+
+        /* ================================
+           INFORMAÇÕES
+        ================================= */
+
+        .information {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border: 1px solid #351010;
+        }
+
+
+        .info {
+
+            min-height: 140px;
+
+            padding: 25px;
+
+            background: #0d0d0d;
+
+            border-right: 1px solid #351010;
+        }
+
+
+        .info:last-child {
+
+            border-right: none;
+        }
+
+
+        .info small {
+
+            display: block;
+
+            color: #555;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .info strong {
+
+            color: #ddd;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+
+        /* ================================
+           HISTÓRIA
+        ================================= */
+
+        .story {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 70px;
+        }
+
+
+        .story p {
+
+            color: #999;
+
+            font-size: 13px;
+
+            line-height: 2;
+
+            margin-bottom: 20px;
+        }
+
+
+        .notice {
+
+            border-left: 3px solid #9d0000;
+
+            background: #110707;
+
+            padding: 25px;
+
+            color: #777;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+        }
+
+
+        .notice strong {
+
+            display: block;
+
+            color: #c00000;
+
+            margin-bottom: 10px;
+        }
+
+
+
+        /* ================================
+           LINHA DO TEMPO
+        ================================= */
+
+        .timeline {
+
+            position: relative;
+        }
+
+
+        .timeline::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 9px;
+
+            top: 0;
+
+            bottom: 0;
+
+            width: 1px;
+
+            background: #4c1010;
+        }
+
+
+        .event {
+
+            position: relative;
+
+            padding-left: 50px;
+
+            margin-bottom: 45px;
+        }
+
+
+        .event::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 3px;
+
+            top: 3px;
+
+            width: 13px;
+
+            height: 13px;
+
+            border-radius: 50%;
+
+            border: 2px solid #a00000;
+
+            background: #090909;
+
+            box-shadow:
+                0 0 12px rgba(160, 0, 0, .5);
+        }
+
+
+        .date {
+
+            color: #a00000;
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .event h3 {
+
+            font-family: "Oswald", sans-serif;
+
+            text-transform: uppercase;
+
+            color: #ddd;
+
+            font-size: 25px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .event p {
+
+            color: #777;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            max-width: 800px;
+        }
+
+
+
+        /* ================================
+           FONTES
+        ================================= */
+
+        .sources {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .source {
+
+            text-decoration: none;
+
+            background: #0d0d0d;
+
+            border: 1px solid #361010;
+
+            padding: 25px;
+
+            transition: .25s;
+        }
+
+
+        .source:hover {
+
+            border-color: #a00000;
+
+            background: #160707;
+
+            transform: translateY(-5px);
+        }
+
+
+        .source-number {
+
+            color: #8c0000;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .source h3 {
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 22px;
+
+            color: #ddd;
+
+            margin-bottom: 10px;
+        }
+
+
+        .source p {
+
+            color: #666;
+
+            font-size: 10px;
+
+            line-height: 1.7;
+        }
+
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+
+            border-top: 1px solid #321010;
+
+            padding: 35px;
+
+            text-align: center;
+
+            color: #444;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+        }
+
+
+
+        /* ================================
+           RESPONSIVO
+        ================================= */
+
+        @media (max-width: 850px) {
+
+            .hero {
+
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+
+            .information {
+
+                grid-template-columns: 1fr 1fr;
+            }
+
+
+            .info:nth-child(2) {
+
+                border-right: none;
+            }
+
+
+            .info:nth-child(-n+2) {
+
+                border-bottom: 1px solid #351010;
+            }
+
+
+            .story {
+
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+            }
+
+
+            .sources {
+
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            header {
+
+                padding: 0 15px;
+            }
+
+
+            .header-status {
+
+                display: none;
+            }
+
+
+            .hero h1 {
+
+                font-size: 58px;
+            }
+
+
+            .information {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .info {
+
+                border-right: none !important;
+
+                border-bottom: 1px solid #351010;
+            }
+
+
+            .info:last-child {
+
+                border-bottom: none;
+            }
+
+
+            .photo {
+
+                height: 380px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <header>
+
+        <!-- VOLTAR PARA ../index.html -->
+
+        <a href="../index.html"
+           class="back"
+           title="Voltar para a página inicial">
+
+            ←
+
+        </a>
+
+
+        <div class="header-name">
+
+            CASE FILE // 001
+
+        </div>
+
+
+        <div class="header-status">
+
+            <span class="status"></span>
+
+            CRIMINAL DATABASE
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- =====================================
+             HERO
+        ====================================== -->
+
+        <section
+            class="hero"
+            style="border-top: none;"
+        >
+
+
+            <div>
+
+                <div class="classification">
+
+                    [ DOSSIÊ Nº 001 / ITALIA ]
+
+                </div>
+
+
+                <h1>
+
+                    Yara
+
+                    <span>Gambirasio</span>
+
+                </h1>
+
+
+                <p class="hero-text">
+
+                    Caso criminal envolvendo o desaparecimento e
+                    assassinato de Yara Gambirasio, adolescente italiana
+                    de 13 anos, em Brembate di Sopra, na região da
+                    Lombardia.
+
+                </p>
+
+
+                <div class="tags">
+
+                    <div class="tag">
+                        <b>PAÍS:</b> ITÁLIA
+                    </div>
+
+                    <div class="tag">
+                        <b>LOCAL:</b> BREMBATE DI SOPRA
+                    </div>
+
+                    <div class="tag">
+                        <b>ANO:</b> 2010
+                    </div>
+
+                    <div class="tag">
+                        <b>IDADE:</b> 13
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOTO -->
+
+            <div class="photo-container">
+
+                <div class="classified">
+
+                    CLASSIFIED
+
+                </div>
+
+
+                <img
+                    class="photo"
+                    src="https://bergamo.corriere.it/methode_image/2022/11/29/Bergamo/Foto%20Bergamo%20-%20Trattate/yara2-kyEE-U339023715292894H-656x492%40Corriere-Web-Bergamo.jpg"
+                    alt="Yara Gambirasio"
+                >
+
+
+                <div class="photo-label">
+
+                    <span>
+                        SUBJECT: YARA GAMBIRASIO
+                    </span>
+
+                    <span>
+                        EVIDENCE_001
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             IDENTIFICAÇÃO
+        ====================================== -->
+
+        <section>
+
+            <div class="section-number">
+
+                01 // IDENTIFICAÇÃO
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Dados do caso
+
+            </h2>
+
+
+            <div class="information">
+
+
+                <div class="info">
+
+                    <small>VÍTIMA</small>
+
+                    <strong>
+                        Yara Gambirasio
+                    </strong>
+
+                </div>
+
+
+                <div class="info">
+
+                    <small>IDADE</small>
+
+                    <strong>
+                        13 anos
+                    </strong>
+
+                </div>
+
+
+                <div class="info">
+
+                    <small>LOCAL</small>
+
+                    <strong>
+                        Brembate di Sopra<br>
+                        Lombardia, Itália
+                    </strong>
+
+                </div>
+
+
+                <div class="info">
+
+                    <small>DESAPARECIMENTO</small>
+
+                    <strong>
+                        26 de novembro<br>
+                        de 2010
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             O CASO
+        ====================================== -->
+
+        <section class="case-section">
+            <div class="section-title">
+                <span>01</span>
+                <h2>Contexto do caso</h2>
+            </div>
+
+            <p>
+                Yara Gambirasio era uma adolescente italiana de 13 anos que vivia
+                com sua família em Brembate di Sopra, na província de Bergamo,
+                região da Lombardia, no norte da Itália. Yara praticava ginástica
+                rítmica e frequentava regularmente um centro esportivo localizado
+                próximo de sua residência.
+            </p>
+
+            <p>
+                Na noite de 26 de novembro de 2010, Yara deixou sua casa para
+                entregar um aparelho de som ao centro esportivo onde treinava.
+                Ela chegou ao local e realizou a entrega, mas não retornou para
+                casa. Seu desaparecimento desencadeou uma grande operação de busca
+                envolvendo forças policiais, bombeiros, voluntários e moradores
+                da região.
+            </p>
+
+            <p>
+                Inicialmente, as investigações concentraram-se na reconstrução dos
+                últimos movimentos da adolescente e na procura por testemunhas,
+                imagens de câmeras de segurança e possíveis pistas sobre o caminho
+                percorrido por Yara naquela noite.
+            </p>
+        </section>
+
+
+        <section class="case-section">
+            <div class="section-title">
+                <span>02</span>
+                <h2>O desaparecimento</h2>
+            </div>
+
+            <p>
+                Yara foi vista pela última vez nas proximidades do centro esportivo
+                de Brembate di Sopra. Seu telefone celular deixou de apresentar
+                atividade pouco tempo depois. A partir daquele momento, familiares
+                e autoridades iniciaram uma extensa busca pela região.
+            </p>
+
+            <p>
+                Durante os meses seguintes, diferentes áreas foram vasculhadas,
+                incluindo campos, estradas, terrenos abandonados e locais próximos
+                ao município. O caso recebeu enorme atenção da imprensa italiana,
+                principalmente devido à idade da vítima e à ausência de informações
+                claras sobre o que havia acontecido.
+            </p>
+
+            <p>
+                A investigação também passou a analisar milhares de informações
+                fornecidas pela população e diferentes possíveis envolvidos.
+                Durante esse período, várias hipóteses foram consideradas e
+                posteriormente descartadas.
+            </p>
+        </section>
+
+
+        <section class="case-section">
+            <div class="section-title">
+                <span>03</span>
+                <h2>Descoberta do corpo</h2>
+            </div>
+
+            <p>
+                Em 26 de fevereiro de 2011, aproximadamente três meses após o
+                desaparecimento, o corpo de Yara foi encontrado em um terreno
+                na região de Chignolo d'Isola, a alguns quilômetros de Brembate
+                di Sopra.
+            </p>
+
+            <p>
+                A descoberta mudou completamente a investigação. Peritos passaram
+                a analisar detalhadamente as roupas e os vestígios encontrados
+                associados ao corpo, procurando determinar como a adolescente havia
+                sido atacada e identificar possíveis vestígios deixados pelo
+                responsável.
+            </p>
+
+            <p>
+                Entre os elementos encontrados estava material genético masculino
+                presente nas roupas da vítima. Esse perfil genético se tornou uma
+                das principais linhas da investigação e posteriormente ficou
+                conhecido publicamente como <strong>"Ignoto 1"</strong>
+                (Desconhecido 1).
+            </p>
+        </section>
+
+
+        <section class="case-section">
+            <div class="section-title">
+                <span>04</span>
+                <h2>A investigação genética</h2>
+            </div>
+
+            <p>
+                A identificação do perfil genético encontrado nas roupas de Yara
+                levou os investigadores a procurar uma correspondência entre o
+                material biológico e possíveis suspeitos.
+            </p>
+
+            <p>
+                A investigação genética foi extremamente ampla. Amostras foram
+                coletadas de numerosas pessoas da região e comparadas com o perfil
+                atribuído ao "Ignoto 1". Durante o processo, os investigadores
+                chegaram a uma ligação genética com uma família da região, mas a
+                identidade exata do homem ainda não havia sido determinada.
+            </p>
+
+            <p>
+                A investigação posteriormente levou até Massimo Giuseppe Bossetti,
+                um trabalhador da construção civil que vivia na região de Bergamo.
+                Testes genéticos foram utilizados para estabelecer a ligação entre
+                Bossetti e o perfil encontrado durante a investigação.
+            </p>
+        </section>
+
+
+        <section class="case-section">
+            <div class="section-title">
+                <span>05</span>
+                <h2>Prisão de Massimo Bossetti</h2>
+            </div>
+
+            <p>
+                Em junho de 2014, após anos de investigação, Massimo Bossetti foi
+                identificado como o homem associado ao perfil genético investigado
+                como "Ignoto 1". Ele foi preso em 16 de junho de 2014.
+            </p>
+
+            <p>
+                A acusação sustentou que Bossetti havia atraído ou abordado Yara
+                nas proximidades do centro esportivo e posteriormente a levado até
+                a área onde seu corpo foi encontrado. A investigação também analisou
+                outros elementos além do DNA, incluindo dados relacionados aos
+                deslocamentos e veículos.
+            </p>
+
+            <p>
+                A defesa de Bossetti contestou diferentes aspectos das provas e da
+                interpretação feita pelos investigadores, especialmente questões
+                relacionadas às evidências genéticas e à reconstrução dos
+                acontecimentos.
+            </p>
+        </section>
+
+
+        <section class="case-section">
+            <div class="section-title">
+                <span>06</span>
+                <h2>O julgamento</h2>
+            </div>
+
+            <p>
+                O processo judicial contra Bossetti começou após a conclusão das
+                investigações. Em julho de 2016, ele foi condenado à prisão
+                perpétua em primeira instância.
+            </p>
+
+            <p>
+                A condenação foi posteriormente confirmada em segunda instância,
+                em 2017. Em 2018, a Corte de Cassação italiana confirmou
+                definitivamente a condenação.
+            </p>
+
+            <p>
+                A decisão judicial considerou o conjunto das provas apresentadas
+                durante o processo, com destaque para as evidências genéticas
+                utilizadas para relacionar Bossetti ao caso.
+            </p>
+        </section>
+
+
+        <section class="case-section">
+            <div class="section-title">
+                <span>07</span>
+                <h2>Questões controversas</h2>
+            </div>
+
+            <p>
+                Apesar da condenação definitiva, partes da investigação e do
+                processo continuaram sendo discutidas publicamente. A defesa de
+                Bossetti questionou principalmente a forma como algumas evidências
+                foram coletadas, preservadas e analisadas.
+            </p>
+
+            <p>
+                Entre os pontos discutidos está o material biológico atribuído ao
+                "Ignoto 1". A defesa solicitou acesso a evidências preservadas para
+                permitir novas análises científicas. A possibilidade de realizar
+                novos exames tornou-se parte das disputas judiciais posteriores
+                à condenação.
+            </p>
+
+            <p>
+                É importante distinguir essas contestações das decisões judiciais:
+                Bossetti permanece condenado definitivamente pelo sistema de
+                Justiça italiano. As discussões posteriores dizem respeito,
+                principalmente, à possibilidade de reexaminar determinadas
+                evidências utilizadas no processo.
+            </p>
+        </section>
+
+
+        <section class="case-section">
+            <div class="section-title">
+                <span>08</span>
+                <h2>Linha do tempo</h2>
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <strong>26 NOV 2010</strong>
+                    <p>Yara deixa sua casa e vai ao centro esportivo de Brembate di Sopra.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>26 NOV 2010</strong>
+                    <p>Yara desaparece após deixar o centro esportivo.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>26 FEV 2011</strong>
+                    <p>O corpo de Yara é encontrado em Chignolo d'Isola.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>2011–2014</strong>
+                    <p>A investigação genética procura identificar o responsável associado ao perfil "Ignoto 1".</p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>16 JUN 2014</strong>
+                    <p>Massimo Bossetti é preso.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>2016</strong>
+                    <p>Bossetti é condenado à prisão perpétua em primeira instância.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>2017</strong>
+                    <p>A condenação é confirmada em segunda instância.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <strong>2018</strong>
+                    <p>A Corte de Cassação confirma definitivamente a condenação.</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================
+             LINHA DO TEMPO
+        ====================================== -->
+
+        <section>
+
+            <div class="section-number">
+
+                03 // CRONOLOGIA
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Linha do tempo
+
+            </h2>
+
+
+            <div class="timeline">
+
+
+                <div class="event">
+
+                    <div class="date">
+                        26 NOV 2010
+                    </div>
+
+                    <h3>
+                        Desaparecimento
+                    </h3>
+
+                    <p>
+
+                        Yara deixa o centro esportivo de Brembate di
+                        Sopra e desaparece.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="event">
+
+                    <div class="date">
+                        NOV 2010 — FEV 2011
+                    </div>
+
+                    <h3>
+                        Buscas
+                    </h3>
+
+                    <p>
+
+                        Autoridades e voluntários realizam buscas
+                        extensas na região.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="event">
+
+                    <div class="date">
+                        26 FEV 2011
+                    </div>
+
+                    <h3>
+                        Corpo encontrado
+                    </h3>
+
+                    <p>
+
+                        O corpo de Yara é localizado em uma área rural
+                        próxima a Chignolo d'Isola.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="event">
+
+                    <div class="date">
+                        2014
+                    </div>
+
+                    <h3>
+                        Prisão de Massimo Bossetti
+                    </h3>
+
+                    <p>
+
+                        Massimo Giuseppe Bossetti é preso após a
+                        investigação que envolveu evidências de DNA.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="event">
+
+                    <div class="date">
+                        2018
+                    </div>
+
+                    <h3>
+                        Condenação definitiva
+                    </h3>
+
+                    <p>
+
+                        Após o processo passar pelas diferentes
+                        instâncias judiciais italianas, a condenação
+                        de Bossetti torna-se definitiva.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             FONTES
+        ====================================== -->
+
+        <section>
+
+            <div class="section-number">
+
+                04 // DOCUMENTAÇÃO
+
+            </div>
+
+
+            <h2 class="section-title">
+
+                Fontes
+
+            </h2>
+
+
+            <div class="sources">
+
+
+                <a
+                    class="source"
+                    href="https://bergamo.corriere.it/notizie/cronaca/22_novembre_29/sulle-tracce-dell-assassino-caso-yara-anteprima-clip-docuserie-a5781348-6fb9-11ed-971c-b93745ae79d9.shtml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="source-number">
+                        SOURCE_01
+                    </div>
+
+                    <h3>
+                        Corriere della Sera
+                    </h3>
+
+                    <p>
+                        Material jornalístico e fotografia relacionada
+                        ao caso Yara Gambirasio.
+                    </p>
+
+                </a>
+
+
+
+                <a
+                    class="source"
+                    href="https://en.wikipedia.org/wiki/Murder_of_Yara_Gambirasio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="source-number">
+                        SOURCE_02
+                    </div>
+
+                    <h3>
+                        Wikipedia
+                    </h3>
+
+                    <p>
+                        Cronologia, investigação e informações sobre
+                        o processo judicial.
+                    </p>
+
+                </a>
+
+
+
+                <a
+                    class="source"
+                    href="https://www.bergamonews.it/fotogallery/yara-gambirasio/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <div class="source-number">
+                        SOURCE_03
+                    </div>
+
+                    <h3>
+                        BergamoNews
+                    </h3>
+
+                    <p>
+                        Galeria de imagens e cobertura jornalística
+                        sobre o desaparecimento.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer>
+
+        CASE DATABASE //
+        YARA GAMBIRASIO //
+        ITALIA — 2010
+
+    </footer>
+
+
+</body>
+
+</html>
