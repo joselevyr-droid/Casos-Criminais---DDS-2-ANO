@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Caso Junko Furuta | Casos Criminais</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top right, #3a0000 0%, transparent 35%),
+                linear-gradient(135deg, #050505, #110000 55%, #050505);
+            color: #e8e8e8;
+            font-family: "Courier New", monospace;
+            min-height: 100vh;
+        }
+
+        /* ===== SETA DE VOLTAR ===== */
+
+        .voltar {
+            position: fixed;
+            top: 20px;
+            left: 25px;
+            width: 48px;
+            height: 48px;
+            border: 2px solid #ff1a1a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #ff3333;
+            font-size: 28px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 15px rgba(255, 0, 0, .35);
+            transition: .3s;
+            z-index: 100;
+        }
+
+        .voltar:hover {
+            background: #8b0000;
+            color: white;
+            transform: translateX(-4px);
+            box-shadow: 0 0 25px red;
+        }
+
+        /* ===== CABEÇALHO ===== */
+
+        header {
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 70px 10%;
+            border-bottom: 1px solid #550000;
+            background:
+                linear-gradient(rgba(0,0,0,.72), rgba(30,0,0,.85)),
+                radial-gradient(circle, #420000, #050505 70%);
+        }
+
+        .terminal {
+            color: #ff3333;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 7vw, 85px);
+            color: #fff;
+            letter-spacing: 5px;
+            text-shadow: 0 0 20px #ff0000;
+        }
+
+        h1 span {
+            color: #d40000;
+        }
+
+        .subtitulo {
+            margin-top: 15px;
+            color: #aaa;
+            font-size: 17px;
+        }
+
+        /* ===== CONTEÚDO ===== */
+
+        main {
+            width: min(1100px, 90%);
+            margin: 50px auto;
+        }
+
+        .alerta {
+            border-left: 4px solid #e00000;
+            background: rgba(100, 0, 0, .18);
+            padding: 18px;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(12, 12, 12, .9);
+            border: 1px solid #3d1717;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.4);
+            transition: .3s;
+        }
+
+        .card:hover {
+            border-color: #a00000;
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(180,0,0,.2);
+        }
+
+        .card h2 {
+            color: #ff3030;
+            margin-bottom: 18px;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #c9c9c9;
+            line-height: 1.7;
+        }
+
+        /* ===== PERFIL ===== */
+
+        .perfil {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .imagem {
+            min-width: 210px;
+            height: 260px;
+            border-radius: 8px;
+            background:
+                linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.7)),
+                url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Tokyo_Skyline_from_Roppongi.jpg/640px-Tokyo_Skyline_from_Roppongi.jpg");
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #520000;
+            display: flex;
+            align-items: flex-end;
+            padding: 15px;
+            color: #fff;
+        }
+
+        .imagem small {
+            background: rgba(0,0,0,.75);
+            padding: 7px;
+        }
+
+        /* ===== LINHA DO TEMPO ===== */
+
+        .timeline {
+            grid-column: 1 / -1;
+        }
+
+        .evento {
+            border-left: 2px solid #a00000;
+            padding: 0 0 25px 25px;
+            position: relative;
+        }
+
+        .evento::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background: #e00000;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            box-shadow: 0 0 10px red;
+        }
+
+        .data {
+            color: #ff3333;
+            font-weight: bold;
+        }
+
+        /* ===== LINKS ===== */
+
+        .fontes {
+            grid-column: 1 / -1;
+        }
+
+        .link {
+            display: block;
+            padding: 15px;
+            margin-top: 12px;
+            border: 1px solid #401010;
+            color: #ddd;
+            text-decoration: none;
+            background: #0b0b0b;
+            transition: .3s;
+        }
+
+        .link:hover {
+            color: white;
+            background: #520000;
+            border-color: #d00000;
+            padding-left: 22px;
+        }
+
+        .link::before {
+            content: "> ";
+            color: #ff2020;
+        }
+
+        /* ===== RODAPÉ ===== */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #3d0000;
+            color: #666;
+            margin-top: 60px;
+        }
+
+        .status {
+            color: #d00000;
+        }
+
+        /* ===== RESPONSIVO ===== */
+
+        @media (max-width: 700px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .perfil {
+                grid-column: auto;
+                flex-direction: column;
+            }
+
+            .imagem {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BOTÃO OBRIGATÓRIO DE VOLTAR -->
+    <a href="../index.html" class="voltar" title="Voltar">←</a>
+
+    <header>
+        <div class="terminal">
+            [ SISTEMA DE ARQUIVOS CRIMINAIS ]<br>
+            > DATABASE_ACCESS: JUNKO_FURUTA
+        </div>
+
+        <h1>JUNKO <span>FURUTA</span></h1>
+
+        <p class="subtitulo">
+            ARQUIVO DE CASO // JAPÃO // 1988–1989
+        </p>
+    </header>
+
+    <main>
+
+        <div class="alerta">
+            ⚠ ARQUIVO DOCUMENTAL — Este conteúdo aborda um crime real envolvendo
+            violência extrema. A página evita imagens e descrições gráficas.
+        </div>
+
+        <div class="grid">
+
+            <!-- PERFIL -->
+
+            <section class="card perfil">
+
+                <div class="imagem">
+                    <small>Tokyo, Japan</small>
+                </div>
+
+                <div>
+                    <h2>01 // SOBRE O CASO</h2>
+
+                    <p>
+                        Junko Furuta foi uma estudante japonesa de 17 anos que foi
+                        sequestrada em novembro de 1988. O caso ficou conhecido
+                        internacionalmente pela gravidade dos crimes cometidos
+                        contra ela.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        A investigação e o julgamento dos envolvidos ocorreram
+                        posteriormente, resultando em condenações para os
+                        responsáveis.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- INFORMAÇÕES -->
+
+            <section class="card">
+
+                <h2>02 // DADOS DO CASO</h2>
+
+                <p><strong>Vítima:</strong> Junko Furuta</p>
+                <p><strong>Idade:</strong> 17 anos</p>
+                <p><strong>País:</strong> Japão</p>
+                <p><strong>Período:</strong> 1988–1989</p>
+                <p><strong>Local:</strong> Região de Tóquio</p>
+
+            </section>
+
+
+            <!-- CONTEXTO -->
+
+            <section class="card">
+
+                <h2>03 // CONTEXTO</h2>
+
+                <p>
+                    O caso começou quando Junko Furuta foi sequestrada por
+                    integrantes de um grupo de jovens. Ela foi mantida em
+                    cativeiro durante várias semanas.
+                </p>
+
+                <br>
+
+                <p>
+                    O crime posteriormente veio a público e provocou ampla
+                    repercussão no Japão, especialmente em discussões sobre
+                    violência juvenil e responsabilidade criminal.
+                </p>
+
+            </section>
+
+
+            <!-- LINHA DO TEMPO -->
+
+            <section class="card timeline">
+
+                <h2>04 // LINHA DO TEMPO</h2>
+
+                <div class="evento">
+                    <div class="data">25 NOVEMBRO 1988</div>
+                    <p>
+                        Junko Furuta é sequestrada enquanto voltava para casa.
+                    </p>
+                </div>
+
+                <div class="evento">
+                    <div class="data">FINAL DE 1988</div>
+                    <p>
+                        Ela permanece mantida em cativeiro.
+                    </p>
+                </div>
+
+                <div class="evento">
+                    <div class="data">4 JANEIRO 1989</div>
+                    <p>
+                        A vítima morre após semanas de violência.
+                    </p>
+                </div>
+
+                <div class="evento">
+                    <div class="data">1989</div>
+                    <p>
+                        Os responsáveis são presos e o caso passa a ser
+                        investigado e julgado pelas autoridades japonesas.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- JULGAMENTO -->
+
+            <section class="card">
+
+                <h2>05 // JULGAMENTO</h2>
+
+                <p>
+                    Os quatro principais envolvidos eram menores de idade no
+                    momento dos crimes. O sistema judicial japonês aplicou
+                    medidas e penas diferentes de acordo com a participação
+                    individual de cada acusado.
+                </p>
+
+                <br>
+
+                <p>
+                    O caso também gerou discussões sobre o tratamento judicial
+                    de crimes graves cometidos por menores.
+                </p>
+
+            </section>
+
+
+            <!-- REPERCUSSÃO -->
+
+            <section class="card">
+
+                <h2>06 // REPERCUSSÃO</h2>
+
+                <p>
+                    O caso continua sendo citado em discussões sobre violência
+                    contra adolescentes, crimes cometidos por grupos de jovens
+                    e o funcionamento da justiça juvenil japonesa.
+                </p>
+
+            </section>
+
+
+            <!-- FONTES -->
+
+            <section class="card fontes">
+
+                <h2>07 // FONTES E LEITURAS</h2>
+
+                <a class="link"
+                   href="https://www.japantimes.co.jp/"
+                   target="_blank">
+                    The Japan Times — notícias e contexto sobre o Japão
+                </a>
+
+                <a class="link"
+                   href="https://www.britannica.com/"
+                   target="_blank">
+                    Encyclopaedia Britannica — referência histórica
+                </a>
+
+                <a class="link"
+                   href="https://www.google.com/search?q=Junko+Furuta+case"
+                   target="_blank">
+                    Pesquisa documental sobre o caso
+                </a>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <span class="status">● SYSTEM ONLINE</span>
+        <br><br>
+        ARQUIVO DIGITAL // CASOS CRIMINAIS
+    </footer>
+
+</body>
+</html>
