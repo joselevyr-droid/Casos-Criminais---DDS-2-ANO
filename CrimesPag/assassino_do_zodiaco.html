@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CASOS CRIMINAIS // ASSASSINO DO ZODÍACO</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Special+Elite&display=swap');
+:root{--red:#b30000;--bright:#e00000;--black:#050505;--panel:#101010;--gray:#888;--light:#ddd}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:radial-gradient(circle at 50% -10%,#300000 0,transparent 35%),linear-gradient(180deg,#070707,#020202);color:var(--light);font-family:'Share Tech Mono',monospace;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;z-index:999;background:repeating-linear-gradient(0deg,transparent 0,transparent 2px,#fff 3px)}
+.back-button{position:fixed;top:22px;left:22px;z-index:1000;width:54px;height:54px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;background:rgba(10,10,10,.92);border:1px solid #650000;transition:.25s}
+.back-button:before{content:"";position:absolute;inset:5px;border:1px solid #280000}.back-arrow{font-size:30px;color:var(--bright);transition:.25s}
+.back-button:hover{background:var(--red);border-color:#ff2222;box-shadow:0 0 25px rgba(220,0,0,.45);transform:translateX(-3px)}
+.back-button:hover .back-arrow{color:#fff;transform:translateX(-4px)}
+header{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;padding:80px 6%;overflow:hidden;border-bottom:1px solid #3b0000}
+.header-grid{position:absolute;inset:0;opacity:.12;background-image:linear-gradient(#a00000 1px,transparent 1px),linear-gradient(90deg,#a00000 1px,transparent 1px);background-size:60px 60px}
+.hero{position:relative;z-index:2;width:min(1250px,100%);display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+.classification{display:inline-flex;align-items:center;gap:10px;color:var(--bright);border:1px solid #650000;padding:8px 13px;font-size:12px;letter-spacing:3px;margin-bottom:22px}
+.classification span{width:7px;height:7px;background:red;border-radius:50%;box-shadow:0 0 12px red;animation:blink 1s infinite}@keyframes blink{50%{opacity:.25}}
+.hero h1{font-family:'Special Elite',serif;font-size:clamp(55px,8vw,110px);line-height:.86;color:#eee;text-transform:uppercase;text-shadow:5px 5px 0 #300000,0 0 35px rgba(190,0,0,.18)}
+.hero h1 strong{color:var(--bright);display:block}.hero-subtitle{margin-top:25px;max-width:620px;color:#999;font-size:16px;line-height:1.7}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.meta{border-left:3px solid var(--red);background:rgba(255,255,255,.025);padding:10px 15px}.meta b{display:block;color:#eee;font-size:13px}.meta small{color:#666}
+.poster-wrapper{position:relative;max-width:440px;width:100%;margin:auto;transform:rotate(2deg);filter:drop-shadow(0 25px 45px #000) drop-shadow(0 0 20px rgba(180,0,0,.12))}
+.poster-wrapper:before{content:"";position:absolute;inset:-14px;border:1px solid #4b0000;transform:rotate(-4deg)}.poster-wrapper:after{content:"EVIDENCE // 1969";position:absolute;bottom:-30px;right:0;font-size:10px;letter-spacing:3px;color:#650000}
+.poster{width:100%;display:block;filter:grayscale(100%) contrast(1.15) brightness(.78);border:7px solid #161616;outline:1px solid #4c0000}
+.terminal{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:min(700px,90%);color:#68ff82;font-size:11px;opacity:.45;text-align:center;letter-spacing:1px}
+nav{position:sticky;top:0;z-index:500;background:rgba(5,5,5,.94);backdrop-filter:blur(12px);border-bottom:1px solid #3d0000}.nav-inner{width:min(1200px,92%);margin:auto;display:flex;align-items:center;justify-content:space-between;min-height:65px}.logo{color:var(--bright);font-size:14px;letter-spacing:2px}.nav-links{display:flex;gap:28px;list-style:none}.nav-links a{color:#777;text-decoration:none;font-size:12px;letter-spacing:1px;transition:.2s}.nav-links a:hover{color:#fff}
+main{width:min(1200px,92%);margin:auto}section{padding:100px 0;border-bottom:1px solid #1c1c1c}.section-label{color:var(--bright);font-size:11px;letter-spacing:4px;margin-bottom:12px}.section-title{font-family:'Special Elite',serif;color:#eee;font-size:clamp(34px,5vw,58px);margin-bottom:35px}.section-title span{color:var(--red)}
+.dossier-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:30px}.panel{background:linear-gradient(145deg,rgba(255,255,255,.025),transparent),#0b0b0b;border:1px solid #242424;padding:30px;position:relative}.panel:before{content:"";position:absolute;top:-1px;left:-1px;width:45px;height:3px;background:var(--red)}.panel p{color:#999;line-height:1.9;margin-bottom:18px}.facts{display:grid;gap:1px;background:#292929}.fact{background:#0c0c0c;padding:17px}.fact label{display:block;color:#555;font-size:10px;letter-spacing:2px;margin-bottom:6px}.fact strong{color:#ddd;font-size:14px}
+.timeline{position:relative;max-width:850px}.timeline:before{content:"";position:absolute;top:0;bottom:0;left:10px;width:1px;background:#480000}.event{position:relative;padding-left:50px;margin-bottom:50px}.event:before{content:"";position:absolute;left:4px;top:4px;width:13px;height:13px;background:var(--black);border:2px solid var(--red);box-shadow:0 0 12px rgba(255,0,0,.3)}.event-date{color:var(--bright);font-size:13px;letter-spacing:2px;margin-bottom:8px}.event h3{color:#eee;margin-bottom:8px;font-family:'Special Elite',serif;font-size:23px}.event p{color:#777;line-height:1.7}
+.cipher{padding:35px;background:repeating-linear-gradient(0deg,#0d0d0d 0,#0d0d0d 3px,#0a0a0a 4px);border:1px solid #333;text-align:center}.cipher-symbol{font-size:clamp(45px,8vw,90px);color:var(--red);letter-spacing:15px;margin-bottom:20px;text-shadow:0 0 20px rgba(255,0,0,.25)}.cipher p{color:#777;line-height:1.7}
+.source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.source-card{text-decoration:none;color:inherit;border:1px solid #252525;padding:25px;background:#0b0b0b;transition:.25s}.source-card:hover{border-color:var(--red);background:#120000;transform:translateY(-4px)}.source-card .number{color:var(--red);font-size:11px}.source-card h3{color:#ddd;margin:12px 0}.source-card p{color:#666;font-size:12px;line-height:1.6}
+footer{padding:60px 5%;text-align:center;border-top:1px solid #360000;color:#444;font-size:11px;letter-spacing:1px}footer strong{color:#700000}
+@media(max-width:850px){.hero{grid-template-columns:1fr;gap:50px}header{padding-top:110px}.poster-wrapper{max-width:330px}.dossier-grid{grid-template-columns:1fr}.source-grid{grid-template-columns:1fr}.nav-inner{justify-content:center}.logo{display:none}.nav-links{gap:16px}}
+@media(max-width:520px){.back-button{top:12px;left:12px;width:45px;height:45px}.hero h1{font-size:54px}.nav-links a{font-size:9px}section{padding:70px 0}.panel{padding:20px}}
+</style>
+</head>
+<body>
+<a href="../index.html" class="back-button" aria-label="Voltar para a página inicial" title="Voltar"><span class="back-arrow">←</span></a>
+<header id="inicio">
+<div class="header-grid"></div>
+<div class="hero">
+<div>
+<div class="classification"><span></span>ARQUIVO CRIMINAL // CASO NÃO RESOLVIDO</div>
+<h1>ASSASSINO <strong>DO ZODÍACO</strong></h1>
+<p class="hero-subtitle">Um dos casos criminais mais conhecidos da Califórnia. Entre cartas, códigos e mensagens enviadas à imprensa, o autor que se identificava como “Zodiac” permaneceu oficialmente não identificado.</p>
+<div class="hero-meta">
+<div class="meta"><b>LOCAL</b><small>Califórnia, EUA</small></div>
+<div class="meta"><b>PERÍODO</b><small>1968 — 1969</small></div>
+<div class="meta"><b>STATUS</b><small>Não solucionado</small></div>
+</div>
+</div>
+<div class="poster-wrapper">
+<img class="poster" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Oct_1969_Zodiac_wanted_poster.png" alt="Cartaz de procurado do Assassino do Zodíaco de outubro de 1969">
+</div>
+</div>
+<div class="terminal">&gt; SYSTEM STATUS: ARCHIVE ONLINE // CASE DATABASE CONNECTED // SUBJECT: ZODIAC</div>
+</header>
+<nav><div class="nav-inner"><div class="logo">CASEFILE_07</div><ul class="nav-links"><li><a href="#dossie">DOSSIÊ</a></li><li><a href="#cronologia">CRONOLOGIA</a></li><li><a href="#codigos">CÓDIGOS</a></li><li><a href="#fontes">ARQUIVOS</a></li></ul></div></nav>
+<main>
+<section id="dossie"><div class="section-label">// 01 — CASE FILE</div><h2 class="section-title">O <span>CASO</span></h2><div class="dossier-grid"><div class="panel"><p>O chamado Assassino do Zodíaco foi um criminoso não identificado que atuou no norte da Califórnia no final da década de 1960.</p><p>O nome “Zodiac” surgiu das próprias comunicações enviadas pelo autor a jornais. Algumas dessas mensagens continham símbolos e cifras, enquanto outras faziam referência aos ataques.</p><p>O caso chamou enorme atenção pública devido à combinação entre os crimes, as cartas enviadas à imprensa e os códigos utilizados nas mensagens.</p><p>Arquivos posteriormente divulgados pelo FBI mostram que a agência participou do trabalho investigativo relacionado ao caso.</p></div><div class="facts"><div class="fact"><label>IDENTIDADE</label><strong>Desconhecida</strong></div><div class="fact"><label>ÁREA</label><strong>Norte da Califórnia</strong></div><div class="fact"><label>PRINCIPAL PERÍODO</label><strong>1968–1969</strong></div><div class="fact"><label>ASSINATURA</label><strong>"ZODIAC"</strong></div><div class="fact"><label>CASO</label><strong>Não solucionado</strong></div></div></div></section>
+<section id="cronologia"><div class="section-label">// 02 — TIMELINE</div><h2 class="section-title">LINHA DO <span>TEMPO</span></h2><div class="timeline">
+<article class="event"><div class="event-date">20 DE DEZEMBRO DE 1968</div><h3>Lake Herman Road</h3><p>David Faraday e Betty Lou Jensen foram atacados enquanto estavam em um veículo próximo a Vallejo, Califórnia.</p></article>
+<article class="event"><div class="event-date">04 DE JULHO DE 1969</div><h3>Blue Rock Springs</h3><p>Darlene Ferrin e Michael Mageau foram atacados em um estacionamento em Vallejo. Ferrin morreu e Mageau sobreviveu.</p></article>
+<article class="event"><div class="event-date">JULHO DE 1969</div><h3>As primeiras cartas</h3><p>Jornais da região começaram a receber cartas atribuídas ao autor, incluindo mensagens que exigiam publicação e apresentavam códigos.</p></article>
+<article class="event"><div class="event-date">27 DE SETEMBRO DE 1969</div><h3>Lake Berryessa</h3><p>Bryan Hartnell e Cecelia Shepard foram atacados enquanto estavam em Lake Berryessa.</p></article>
+<article class="event"><div class="event-date">11 DE OUTUBRO DE 1969</div><h3>Paul Stine</h3><p>O motorista de táxi Paul Stine foi assassinado em San Francisco. Testemunhas forneceram uma descrição física utilizada posteriormente em esboços policiais.</p></article>
+</div></section>
+<section id="codigos"><div class="section-label">// 03 — ENCRYPTED MATERIAL</div><h2 class="section-title">CARTAS & <span>CÓDIGOS</span></h2><div class="cipher"><div class="cipher-symbol">☉ ⌁ ◉ △ ✕</div><p>O uso de símbolos e cifras tornou-se uma das marcas mais conhecidas das comunicações atribuídas ao Zodiac. O material original pode ser consultado nos arquivos históricos relacionados ao caso.</p></div></section>
+<section id="fontes"><div class="section-label">// 04 — EXTERNAL ARCHIVES</div><h2 class="section-title">ARQUIVOS <span>EXTERNOS</span></h2><div class="source-grid">
+<a class="source-card" href="https://vault.fbi.gov/The%20Zodiac%20Killer" target="_blank" rel="noopener noreferrer"><div class="number">SOURCE_01</div><h3>FBI — THE ZODIAC KILLER</h3><p>Arquivo histórico do FBI contendo documentos relacionados à investigação.</p></a>
+<a class="source-card" href="https://commons.wikimedia.org/wiki/File:Oct_1969_Zodiac_wanted_poster.png" target="_blank" rel="noopener noreferrer"><div class="number">SOURCE_02</div><h3>CARTAZ DE 1969</h3><p>Cartaz policial de outubro de 1969 com os esboços do suspeito.</p></a>
+<a class="source-card" href="https://commons.wikimedia.org/wiki/Category:Zodiac_killer" target="_blank" rel="noopener noreferrer"><div class="number">SOURCE_03</div><h3>WIKIMEDIA COMMONS</h3><p>Coleção de imagens e documentos relacionados ao caso do Zodiac.</p></a>
+</div></section>
+</main>
+<footer>CASEFILE_07 // <strong>ASSASSINO DO ZODÍACO</strong><br><br>Arquivo visual desenvolvido para fins informativos e históricos.</footer>
+<script>console.log("%c CASEFILE_07 ","background:#b30000;color:#fff;padding:8px;");</script>
+</body>
+</html>
